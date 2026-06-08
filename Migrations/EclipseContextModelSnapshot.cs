@@ -1,0 +1,247 @@
+﻿
+using System;
+using EclipseSentinel.API.Data;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using Oracle.EntityFrameworkCore.Metadata;
+
+#nullable disable
+
+namespace EclipseSentinel.API.Migrations
+{
+    [DbContext(typeof(EclipseContext))]
+    partial class EclipseContextModelSnapshot : ModelSnapshot
+    {
+        protected override void BuildModel(ModelBuilder modelBuilder)
+        {
+#pragma warning disable 612, 618
+            modelBuilder
+                .HasAnnotation("ProductVersion", "8.0.8")
+                .HasAnnotation("Relational:MaxIdentifierLength", 128);
+
+            OracleModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("EclipseSentinel.API.Models.Alerta", b =>
+                {
+                    b.Property<long>("IdAlerta")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("NUMBER(19)")
+                        .HasColumnName("ID_ALERTA");
+
+                    OraclePropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("IdAlerta"));
+
+                    b.Property<DateTime?>("DataAlerta")
+                        .HasColumnType("TIMESTAMP(7)")
+                        .HasColumnName("DATA_ALERTA");
+
+                    b.Property<string>("Descricao")
+                        .HasColumnType("NVARCHAR2(2000)")
+                        .HasColumnName("DESCRICAO");
+
+                    b.Property<long?>("IdArea")
+                        .HasColumnType("NUMBER(19)")
+                        .HasColumnName("ID_AREA");
+
+                    b.Property<string>("Severidade")
+                        .HasColumnType("NVARCHAR2(2000)")
+                        .HasColumnName("SEVERIDADE");
+
+                    b.Property<string>("TipoAlerta")
+                        .HasColumnType("NVARCHAR2(2000)")
+                        .HasColumnName("TIPO_ALERTA");
+
+                    b.HasKey("IdAlerta");
+
+                    b.HasIndex("IdArea");
+
+                    b.ToTable("GS_ECLIPSE_ALERTA");
+                });
+
+            modelBuilder.Entity("EclipseSentinel.API.Models.Area", b =>
+                {
+                    b.Property<long>("IdArea")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("NUMBER(19)")
+                        .HasColumnName("ID_AREA");
+
+                    OraclePropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("IdArea"));
+
+                    b.Property<double?>("Latitude")
+                        .HasColumnType("BINARY_DOUBLE")
+                        .HasColumnName("LATITUDE");
+
+                    b.Property<double?>("Longitude")
+                        .HasColumnType("BINARY_DOUBLE")
+                        .HasColumnName("LONGITUDE");
+
+                    b.Property<string>("NivelRisco")
+                        .HasColumnType("NVARCHAR2(2000)")
+                        .HasColumnName("NIVEL_RISCO");
+
+                    b.Property<string>("Nome")
+                        .HasColumnType("NVARCHAR2(2000)")
+                        .HasColumnName("NOME");
+
+                    b.Property<string>("StatusArea")
+                        .HasColumnType("NVARCHAR2(2000)")
+                        .HasColumnName("STATUS_AREA");
+
+                    b.HasKey("IdArea");
+
+                    b.ToTable("GS_ECLIPSE_AREA");
+                });
+
+            modelBuilder.Entity("EclipseSentinel.API.Models.LeituraSensor", b =>
+                {
+                    b.Property<long>("IdLeitura")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("NUMBER(19)")
+                        .HasColumnName("ID_LEITURA");
+
+                    OraclePropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("IdLeitura"));
+
+                    b.Property<DateTime?>("DataLeitura")
+                        .HasColumnType("TIMESTAMP(7)")
+                        .HasColumnName("DATA_LEITURA");
+
+                    b.Property<decimal?>("Fumaca")
+                        .HasColumnType("DECIMAL(18, 2)")
+                        .HasColumnName("FUMACA");
+
+                    b.Property<long?>("IdSensor")
+                        .HasColumnType("NUMBER(19)")
+                        .HasColumnName("ID_SENSOR");
+
+                    b.Property<decimal?>("Temperatura")
+                        .HasColumnType("DECIMAL(18, 2)")
+                        .HasColumnName("TEMPERATURA");
+
+                    b.Property<decimal?>("Umidade")
+                        .HasColumnType("DECIMAL(18, 2)")
+                        .HasColumnName("UMIDADE");
+
+                    b.HasKey("IdLeitura");
+
+                    b.HasIndex("IdSensor");
+
+                    b.ToTable("GS_ECLIPSE_LEITURA_SENSOR");
+                });
+
+            modelBuilder.Entity("EclipseSentinel.API.Models.Ocorrencia", b =>
+                {
+                    b.Property<long>("IdOcorrencia")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("NUMBER(19)")
+                        .HasColumnName("ID_OCORRENCIA");
+
+                    OraclePropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("IdOcorrencia"));
+
+                    b.Property<DateTime?>("DataOcorrencia")
+                        .HasColumnType("TIMESTAMP(7)")
+                        .HasColumnName("DATA_OCORRENCIA");
+
+                    b.Property<string>("Descricao")
+                        .HasColumnType("NVARCHAR2(2000)")
+                        .HasColumnName("DESCRICAO");
+
+                    b.Property<long?>("IdArea")
+                        .HasColumnType("NUMBER(19)")
+                        .HasColumnName("ID_AREA");
+
+                    b.Property<long?>("IdUsuario")
+                        .HasColumnType("NUMBER(19)")
+                        .HasColumnName("ID_USUARIO");
+
+                    b.Property<string>("ImagemUrl")
+                        .HasColumnType("NVARCHAR2(2000)")
+                        .HasColumnName("IMAGEM_URL");
+
+                    b.HasKey("IdOcorrencia");
+
+                    b.HasIndex("IdArea");
+
+                    b.ToTable("GS_ECLIPSE_OCORRENCIA");
+                });
+
+            modelBuilder.Entity("EclipseSentinel.API.Models.Sensor", b =>
+                {
+                    b.Property<long>("IdSensor")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("NUMBER(19)")
+                        .HasColumnName("ID_SENSOR");
+
+                    OraclePropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("IdSensor"));
+
+                    b.Property<long?>("IdArea")
+                        .HasColumnType("NUMBER(19)")
+                        .HasColumnName("ID_AREA");
+
+                    b.Property<string>("StatusSensor")
+                        .HasColumnType("NVARCHAR2(2000)")
+                        .HasColumnName("STATUS_SENSOR");
+
+                    b.Property<string>("TipoSensor")
+                        .HasColumnType("NVARCHAR2(2000)")
+                        .HasColumnName("TIPO_SENSOR");
+
+                    b.HasKey("IdSensor");
+
+                    b.HasIndex("IdArea");
+
+                    b.ToTable("GS_ECLIPSE_SENSOR");
+                });
+
+            modelBuilder.Entity("EclipseSentinel.API.Models.Alerta", b =>
+                {
+                    b.HasOne("EclipseSentinel.API.Models.Area", "Area")
+                        .WithMany("Alertas")
+                        .HasForeignKey("IdArea");
+
+                    b.Navigation("Area");
+                });
+
+            modelBuilder.Entity("EclipseSentinel.API.Models.LeituraSensor", b =>
+                {
+                    b.HasOne("EclipseSentinel.API.Models.Sensor", "Sensor")
+                        .WithMany("Leituras")
+                        .HasForeignKey("IdSensor");
+
+                    b.Navigation("Sensor");
+                });
+
+            modelBuilder.Entity("EclipseSentinel.API.Models.Ocorrencia", b =>
+                {
+                    b.HasOne("EclipseSentinel.API.Models.Area", "Area")
+                        .WithMany("Ocorrencias")
+                        .HasForeignKey("IdArea");
+
+                    b.Navigation("Area");
+                });
+
+            modelBuilder.Entity("EclipseSentinel.API.Models.Sensor", b =>
+                {
+                    b.HasOne("EclipseSentinel.API.Models.Area", "Area")
+                        .WithMany("Sensores")
+                        .HasForeignKey("IdArea");
+
+                    b.Navigation("Area");
+                });
+
+            modelBuilder.Entity("EclipseSentinel.API.Models.Area", b =>
+                {
+                    b.Navigation("Alertas");
+
+                    b.Navigation("Ocorrencias");
+
+                    b.Navigation("Sensores");
+                });
+
+            modelBuilder.Entity("EclipseSentinel.API.Models.Sensor", b =>
+                {
+                    b.Navigation("Leituras");
+                });
+#pragma warning restore 612, 618
+        }
+    }
+}
