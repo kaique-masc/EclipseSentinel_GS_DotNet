@@ -269,7 +269,7 @@ DELETE /api/Ocorrencia/{id}
 
 ## POST Alerta
 
-<img src="images/post-alerta.jpeg" width="1000">
+<img src="images/post-alerta.png" width="1000">
 
 ---
 
