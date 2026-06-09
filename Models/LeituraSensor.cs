@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace EclipseSentinel.API.Models;
 
@@ -26,5 +27,6 @@ public class LeituraSensor
     public long? IdSensor { get; set; }
 
     [ForeignKey("IdSensor")]
+    [JsonIgnore]
     public Sensor? Sensor { get; set; }
 }

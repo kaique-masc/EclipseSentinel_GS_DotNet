@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("EclipseSentinel.API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+bd36ee46bd74549c2f555261e224740f98c3c8f2")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0fe0eb62da130623e4dcd1a17a74da413e84b2fc")]
 [assembly: System.Reflection.AssemblyProductAttribute("EclipseSentinel.API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("EclipseSentinel.API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

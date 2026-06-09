@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace EclipseSentinel.API.Models;
 
@@ -25,9 +26,12 @@ public class Area
     [Column("STATUS_AREA")]
     public string? StatusArea { get; set; }
 
+    [JsonIgnore]
     public ICollection<Sensor>? Sensores { get; set; }
 
+    [JsonIgnore]
     public ICollection<Alerta>? Alertas { get; set; }
 
+    [JsonIgnore]
     public ICollection<Ocorrencia>? Ocorrencias { get; set; }
 }
